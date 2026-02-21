@@ -1,0 +1,18 @@
+# Base de datos física de MySQL
+mysql/data/
+
+# Configuración del editor
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Laravel (referenciando a la carpeta src)
+src/.env
+src/vendor/
+src/node_modules/
+src/storage/*.key
+src/storage/framework/views/*
+src/storage/framework/sessions/*
+src/storage/framework/cache/data/*
