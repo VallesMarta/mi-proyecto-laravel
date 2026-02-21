@@ -1,0 +1,126 @@
+/* Cuadrícula de viajes */
+.viajes-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fill,
+        minmax(280px, 1fr)
+    ); /* Evita que sean demasiado estrechas */
+    gap: 25px;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Todas las cards miden lo mismo */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-image img {
+    width: 100%;
+    height: 180px; /* Proporción fija para la imagen */
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* Esto empuja los botones al final */
+}
+
+.card-title h2 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.card-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+/* Información Duración y Precio */
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f1f8f9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+}
+
+.info-precio {
+    font-weight: bold;
+    color: #2c7a7b;
+    font-size: 1rem;
+}
+
+.card-link {
+    color: #35a1a8;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+}
+
+/* --- BOTONES (Aquí estaba el fallo) --- */
+.card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Los pega abajo del todo */
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Forzamos que el botón A y el FORM ocupen el mismo ancho */
+.card-actions .btn-edit,
+.card-actions .form-delete {
+    flex: 1;
+}
+
+.btn {
+    display: block; /* Importante para que no se comporten como texto inline */
+    width: 100%;
+    padding: 10px 5px; /* Padding controlado */
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    height: 40px; /* Altura fija para que no se estiren como en la foto */
+    line-height: 20px; /* Centra el texto verticalmente */
+}
+
+.btn-edit {
+    background-color: #3498db;
+}
+
+.btn-delete {
+    background-color: #e74c3c;
+}
+
+.btn:hover {
+    filter: brightness(0.9);
+}
+.volver-btn {
+    margin-top: 3px;
+    color: #a9b3b6;
+    font-size: larger;
+}
