@@ -3,18 +3,19 @@ services:
   php:
     image: php:8.4-fpm
     build: ./php
+    user: "1000:1000"
     depends_on:
       - mysql
     volumes:
       - ./src:/var/www/html
-      - ./php/conf.d/99-xdebug.ini:/usr/local/etc/php/conf.d/99-xdebug.ini
+      - ./php/conf.d/99-xdebug.ini:/usr/local/etc/php/conf.d/99-xdebug.ini    
     environment:
-      - MYSQL_HOST=mysql
-      - MYSQL_USER=alumno
-      - MYSQL_PASSWORD=alumno
-      - MYSQL_DB=test
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
+      - DB_CONNECTION=mysql
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=laravel
+      - DB_USERNAME=root
+      - DB_PASSWORD=administrador
   nginx:
     image: nginx:latest
     ports:
@@ -30,10 +31,10 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: administrador
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: laravel
       MYSQL_USER: alumno
       MYSQL_PASSWORD: alumno
-      
+
     volumes:
       - ./mysql/data:/var/lib/mysql
     ports:
@@ -42,5 +43,5 @@ services:
       - default
 
 networks:
- default:
-   driver: bridge
+  default:
+    driver: bridge
